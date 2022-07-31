@@ -2,28 +2,44 @@
 import styled, { css } from "styled-components";
 import MessageIcon from "@mui/icons-material/Message";
 
+
 // constainer
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  /* min-height: 100vh;
+  min-height: -webkit-fill-available; */
+  background-color:red;
+}
 `;
 
 export const ServersWrapper = styled.div(
   ({ style }) => css`
-    height: 100%;
-    border-right: 0.05rem solid #ffffff29;
+    width: 100%;
+    height: 9rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
     background-color: #22222250;
-    border-top-right-radius: 1rem;
+    display: flex;
+    align-items: center;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    background-color:blue;
   `
 );
 
 export const UsersWrapper = styled.div(
   ({ style }) => css`
-    height: 100%;
+  background-color: #22222250;
     ${style.display === "mobile" &&
     css`
-      width: 85%;
+      width: 100%;
+      height:100%;
+     
     `}
     ${style.display === "browser" &&
     css`

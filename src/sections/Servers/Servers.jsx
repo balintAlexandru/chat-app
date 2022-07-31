@@ -7,7 +7,20 @@ import serverIcon from "../../assets/images/sections/servers/serverIcon.png"
 // LIBRARIES
 
 // CONSTANTS & MOCKS
-const serversModel = [{image: serverIcon},{image: serverIcon},{image: serverIcon}]
+const serversModel = [
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+  {image: serverIcon},
+]
 // REDUX
 
 // COMPONENTS

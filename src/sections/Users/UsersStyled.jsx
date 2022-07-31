@@ -8,14 +8,21 @@ import MessageIcon from "@mui/icons-material/Message";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  padding: 0rem 1.1rem 0rem 1.1rem;
+  background-color: grey;
   display: flex;
   flex-direction: column;
-  padding: 0rem 1.1rem 0rem 1.1rem;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
 `;
-
+export const UsersContent = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: black;
+`;
 export const UserListWrapper = styled.div`
-  height: 83%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -24,12 +31,14 @@ export const UserListWrapper = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  background-color:red;
 `;
 
 export const SearchWrapper = styled.div`
   width: 100%;
-  height: 5%;
-  margin: 2.5rem 0 1.5rem 0;
+  height: 7%;
+  margin: 3.5rem 0 1.5rem 0;
+  /* background-color:red; */
 `;
 export const Search = styled.input`
   width: 100%;
@@ -52,10 +61,8 @@ export const Search = styled.input`
 `;
 export const UserProfile = styled.div`
   width: 100%;
-  height: 7%;
-  background-color: #22222250;
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+  height: 25%;
+  padding-top: 3.3rem;
   border-top: 0.05rem solid #ffffff29;
 `;
 

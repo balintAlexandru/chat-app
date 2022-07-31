@@ -25,6 +25,7 @@ const Main = () => {
     } else if (isBrowser) {
       setDevice("browser");
     }
+   
   }, []);
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -43,7 +44,8 @@ const Main = () => {
       setDefaultChatLayout(false);
     }
   };
-
+  
+  //TODO: MAKE SPECIFIC DIV FOR SEARCH FRIEND
   const handleDisplayInterface = (display) => {
     switch (display) {
       case "mobile":
