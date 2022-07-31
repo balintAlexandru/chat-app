@@ -7,7 +7,7 @@ import './index.css';
 import { BrowserRouter } from "react-router-dom";
 
 // COMPONENTS
-import AppRoutes from "../../react/src/config/appRoutes";
+import AppRoutes from "../src/config/appRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
