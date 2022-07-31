@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa190067.css",
-    "main.js": "/static/js/main.b3a9e459.js",
-    "static/media/background.jpg": "/static/media/background.6a3af3e6f027c3dc9b68.jpg",
-    "static/media/logo.png": "/static/media/logo.68c1861ed3cb7adff0fb.png",
-    "static/media/userIcon.png": "/static/media/userIcon.2d364588433f82f4ca9e.png",
-    "static/media/serverIcon.png": "/static/media/serverIcon.7fa080715a9808834dae.png",
-    "index.html": "/index.html",
-    "main.fa190067.css.map": "/static/css/main.fa190067.css.map",
-    "main.b3a9e459.js.map": "/static/js/main.b3a9e459.js.map"
+    "main.css": "/chat-app/static/css/main.13e1494d.css",
+    "main.js": "/chat-app/static/js/main.851f474b.js",
+    "static/media/background.jpg": "/chat-app/static/media/background.6a3af3e6f027c3dc9b68.jpg",
+    "static/media/logo.png": "/chat-app/static/media/logo.68c1861ed3cb7adff0fb.png",
+    "static/media/userIcon.png": "/chat-app/static/media/userIcon.2d364588433f82f4ca9e.png",
+    "static/media/serverIcon.png": "/chat-app/static/media/serverIcon.7fa080715a9808834dae.png",
+    "index.html": "/chat-app/index.html",
+    "main.13e1494d.css.map": "/chat-app/static/css/main.13e1494d.css.map",
+    "main.851f474b.js.map": "/chat-app/static/js/main.851f474b.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa190067.css",
-    "static/js/main.b3a9e459.js"
+    "static/css/main.13e1494d.css",
+    "static/js/main.851f474b.js"
   ]
 }
