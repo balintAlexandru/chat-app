@@ -23,6 +23,9 @@ export const Container = styled.div(
       align-items: center;
       justify-content: center;
       padding: 15rem 30rem;
+      @media (min-width: 1920px) {
+        background-color: red;
+      }
     `}
   `
 );
@@ -200,7 +203,7 @@ export const FormTitle = styled.span(
 
 export const InputsWrapper = styled.div(
   ({ style }) => css`
-  ${console.log(style)}
+    ${console.log(style)}
     ${style.device === "mobile" &&
     css`
       width: 100%;
@@ -209,14 +212,17 @@ export const InputsWrapper = styled.div(
       gap: 2.5rem;
       padding: 4.5rem 3rem 3rem 3rem;
     `}
-    ${(style.device === "browser" && style.path === "LOGIN") && css`
+    ${style.device === "browser" &&
+    style.path === "LOGIN" &&
+    css`
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
       padding: 10rem 3rem 3rem 3rem;
     `}
-    ${(style.device === "browser" && style.path === "REGISTER") &&
+    ${style.device === "browser" &&
+    style.path === "REGISTER" &&
     css`
       width: 100%;
       display: flex;
