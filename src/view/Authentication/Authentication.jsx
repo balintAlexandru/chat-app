@@ -102,7 +102,6 @@ const Authentication = (props) => {
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      console.log(window.innerWidth);
       window.innerWidth <= 600 ? setDevice("mobile") : setDevice("browser");
     });
     return () => {
@@ -111,7 +110,7 @@ const Authentication = (props) => {
   }, []);
 
   // REQUEST API FUNCTIONS
-  console.log(device);
+
   // HANDLERS FUNCTIONS
   const handleInputValue = (event) => {
     if (path === "LOGIN") {
@@ -234,7 +233,7 @@ const Authentication = (props) => {
                   {title}
                 </Styled.FormTitle>
               </Styled.FormTitleWrapper>
-              <Styled.FormContent style={{ path, isMobile }}>
+              <Styled.FormContent style={{ path, device }}>
                 {data.length > 0 && (
                   <Styled.InputsWrapper style={{ path, device }}>
                     {data?.map((element, index) => {

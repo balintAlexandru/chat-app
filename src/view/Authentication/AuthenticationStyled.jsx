@@ -1,5 +1,5 @@
 // LIBRARIES
-import styled, { css, keyframes, ServerStyleSheet } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 // container
 export const Container = styled.div(
@@ -203,7 +203,6 @@ export const FormTitle = styled.span(
 
 export const InputsWrapper = styled.div(
   ({ style }) => css`
-    ${console.log(style)}
     ${style.device === "mobile" &&
     css`
       width: 100%;
@@ -331,18 +330,11 @@ export const ErrorMessageContainer = styled.div`
 export const FormContent = styled.div(
   ({ style }) => css`
     width: 100%;
-    /* width: 100%;
-    height: ${style.path === "WELCOME"
-      ? "25%"
-      : style.path === "LOGIN"
-      ? "35%"
-      : "45%"};
-    display: flex;
-    flex-direction: column;
-    margin-top: ${style.path === "WELCOME" ? "0rem" : "2rem"};
-    ${style.isMobile &&
+    ${console.log(style)}
+    ${style.device === "browser" &&
+    style.path === "WELCOME" &&
     css`
-      height: ${style.path === "LOGIN" ? "37%" : "47%"};
-    `} */
+      padding: 6rem;
+    `}
   `
 );
