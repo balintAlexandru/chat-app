@@ -24,7 +24,7 @@ export const Container = styled.div(
       justify-content: center;
       padding: 15rem 30rem;
       @media (min-width: 1920px) {
-        background-color: red;
+        padding: 20rem 50rem;
       }
     `}
   `
@@ -229,6 +229,9 @@ export const InputsWrapper = styled.div(
       flex-direction: column;
       gap: 2.5rem;
       padding: 4.5rem 3rem 3rem 3rem;
+      @media (min-width: 1920px) {
+        padding: 7.5rem 3rem 3rem 3rem;
+      }
     `}
   `
 );

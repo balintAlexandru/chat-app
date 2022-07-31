@@ -75,6 +75,12 @@ const Authentication = (props) => {
 
   // USE EFFECT FUNCTION
   useEffect(() => {
+    if (isMobile) {
+      setDevice("mobile");
+    }
+    if (isBrowser) {
+      setDevice("browser");
+    }
     setTitle(path);
     if (path === "LOGIN") {
       setData(loginModel);
@@ -95,22 +101,17 @@ const Authentication = (props) => {
   }, [navigate]);
 
   useEffect(() => {
-    if(isMobile){
-      setDevice("mobile");
-    }
-    if(isBrowser){
-      setDevice("browser")
-    }
     window.addEventListener("resize", () => {
-      window.innerWidth <= 576 ? setDevice("mobile") : setDevice("browser");
+      console.log(window.innerWidth);
+      window.innerWidth <= 600 ? setDevice("mobile") : setDevice("browser");
     });
     return () => {
       window.removeEventListener("resize", () => {});
     };
-    
   }, []);
-  // REQUEST API FUNCTIONS
 
+  // REQUEST API FUNCTIONS
+  console.log(device);
   // HANDLERS FUNCTIONS
   const handleInputValue = (event) => {
     if (path === "LOGIN") {
@@ -149,10 +150,16 @@ const Authentication = (props) => {
     }
   };
   const handleText = (type) => {
-    if ((type === "login" && path === "WELCOME") || (type === "register" && path === "REGISTER")) {
+    if (
+      (type === "login" && path === "WELCOME") ||
+      (type === "register" && path === "REGISTER")
+    ) {
       return "LOGIN";
     }
-    if ((type === "register" && path === "WELCOME") || (type === "register" && path === "LOGIN")) {
+    if (
+      (type === "register" && path === "WELCOME") ||
+      (type === "register" && path === "LOGIN")
+    ) {
       return "REGISTER";
     }
     if (type === "login" && path === "LOGIN") {
@@ -163,13 +170,20 @@ const Authentication = (props) => {
     }
   };
   const handleConnect = () => {
-    if (credentials.email === loginData.email && credentials.password === loginData.password) {
+    if (
+      credentials.email === loginData.email &&
+      credentials.password === loginData.password
+    ) {
       navigate("/app");
     } else if (path === "LOGIN") {
       handleError();
       setError("Invalid E-mail or Password");
     } else if (path === "REGISTER") {
-      if (registerData.userName === "" && registerData.email === "" && registerData.password === "") {
+      if (
+        registerData.userName === "" &&
+        registerData.email === "" &&
+        registerData.password === ""
+      ) {
         handleError();
         setError("Please complete all fields");
       } else if (registerData.userName === "") {
@@ -195,32 +209,44 @@ const Authentication = (props) => {
       setShowErrorMessage(false);
     }, 1700);
   };
-  console.log(data)
+  console.log(data);
   return (
     <>
-     <Styled.Container style={{device}}>
+      <Styled.Container style={{ device }}>
         <Styled.AuthenticationWrapper style={{ device }}>
-            <Styled.AuthenticationInfo style={{ device }}>
-              <Styled.AuthenticationLogoWrapper> 
-               <Styled.AuthenticationLogo src={logo} alt="logo" style={{ isMobile }} /> 
-             </Styled.AuthenticationLogoWrapper>
-              {!isMobile && <Styled.AuthenticationInfoBackground src={background} />}
-            </Styled.AuthenticationInfo>
+          <Styled.AuthenticationInfo style={{ device }}>
+            <Styled.AuthenticationLogoWrapper>
+              <Styled.AuthenticationLogo
+                src={logo}
+                alt="logo"
+                style={{ isMobile }}
+              />
+            </Styled.AuthenticationLogoWrapper>
+            {!isMobile && (
+              <Styled.AuthenticationInfoBackground src={background} />
+            )}
+          </Styled.AuthenticationInfo>
 
-         <Styled.AuthenticationContent style={{ device }}>
-              <Styled.FormWrapper>
+          <Styled.AuthenticationContent style={{ device }}>
+            <Styled.FormWrapper>
               <Styled.FormTitleWrapper>
-                <Styled.FormTitle style={{ isMobile }}>{title}</Styled.FormTitle>
+                <Styled.FormTitle style={{ isMobile }}>
+                  {title}
+                </Styled.FormTitle>
               </Styled.FormTitleWrapper>
               <Styled.FormContent style={{ path, isMobile }}>
                 {data.length > 0 && (
-                  <Styled.InputsWrapper style={{path, device}}>
+                  <Styled.InputsWrapper style={{ path, device }}>
                     {data?.map((element, index) => {
                       return (
                         <Input
                           key={`input-${index}`}
                           name={element.name}
-                          value={path === "LOGIN" ? loginData[element.name] : registerData[element.name]}
+                          value={
+                            path === "LOGIN"
+                              ? loginData[element.name]
+                              : registerData[element.name]
+                          }
                           type={element.type}
                           placeholder={element.placeholder}
                           onChange={(event) => handleInputValue(event)}
@@ -234,27 +260,34 @@ const Authentication = (props) => {
                 <Styled.ErrorMessageContainer>
                   {showErrorMessage && (
                     <Styled.ErorrMessageWrapper>
-                      <Styled.ErrorMessage style={{ isMobile }}>{error}</Styled.ErrorMessage>
+                      <Styled.ErrorMessage style={{ isMobile }}>
+                        {error}
+                      </Styled.ErrorMessage>
                     </Styled.ErorrMessageWrapper>
                   )}
                 </Styled.ErrorMessageContainer>
               </Styled.FormContent>
 
               <Styled.ButtonsWrapper style={{ path }}>
-                <Styled.LoginButton onClick={() => handleClick("login")} style={{ isMobile }}>
+                <Styled.LoginButton
+                  onClick={() => handleClick("login")}
+                  style={{ isMobile }}
+                >
                   {handleText("login")}
                 </Styled.LoginButton>
-                <Styled.RegisterButton onClick={() => handleClick("register")} style={{ isMobile }}>
+                <Styled.RegisterButton
+                  onClick={() => handleClick("register")}
+                  style={{ isMobile }}
+                >
                   {handleText("register")}
                 </Styled.RegisterButton>
               </Styled.ButtonsWrapper>
-
             </Styled.FormWrapper>
           </Styled.AuthenticationContent>
-        </Styled.AuthenticationWrapper> 
+        </Styled.AuthenticationWrapper>
         <Particle />
       </Styled.Container>
-      
+
       {/* <Particle /> */}
     </>
   );
