@@ -7,7 +7,7 @@ import background from "../../assets/images/authentication/background.jpg";
 import logo from "../../assets/images/authentication/logo.png";
 
 // LIBRARIES
-import { isMobile } from "react-device-detect";
+import { isMobile, isBrowser } from "react-device-detect";
 
 // REDUX
 
@@ -34,8 +34,9 @@ const Authentication = (props) => {
   });
   const [title, setTitle] = useState("");
   const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [error, setError] = useState("Please complete all fields");
+  const [showErrorMessage, setShowErrorMessage] = useState(true);
+  const [device, setDevice] = useState("");
   const credentials = {
     email: "chat-app@build.com",
     password: "parola123",
@@ -93,6 +94,21 @@ const Authentication = (props) => {
     setShowErrorMessage(false);
   }, [navigate]);
 
+  useEffect(() => {
+    if(isMobile){
+      setDevice("mobile");
+    }
+    if(isBrowser){
+      setDevice("browser")
+    }
+    window.addEventListener("resize", () => {
+      window.innerWidth <= 576 ? setDevice("mobile") : setDevice("browser");
+    });
+    return () => {
+      window.removeEventListener("resize", () => {});
+    };
+    
+  }, []);
   // REQUEST API FUNCTIONS
 
   // HANDLERS FUNCTIONS
@@ -179,24 +195,26 @@ const Authentication = (props) => {
       setShowErrorMessage(false);
     }, 1700);
   };
-
+  console.log(data)
   return (
     <>
-      <Styled.Container>
-        <Styled.AuthenticationWrapper style={{ isMobile }}>
-          <Styled.AuthenticationInfo style={{ isMobile }}>
-            <Styled.AuthenticationLogo src={logo} alt="logo" style={{ isMobile }} />
-            {!isMobile && <Styled.AuthenticationInfoBackground src={background} />}
-          </Styled.AuthenticationInfo>
+     <Styled.Container style={{device}}>
+        <Styled.AuthenticationWrapper style={{ device }}>
+            <Styled.AuthenticationInfo style={{ device }}>
+              <Styled.AuthenticationLogoWrapper> 
+               <Styled.AuthenticationLogo src={logo} alt="logo" style={{ isMobile }} /> 
+             </Styled.AuthenticationLogoWrapper>
+              {!isMobile && <Styled.AuthenticationInfoBackground src={background} />}
+            </Styled.AuthenticationInfo>
 
-          <Styled.AuthenticationContent style={{ isMobile }}>
-            <Styled.FormWrapper>
+         <Styled.AuthenticationContent style={{ device }}>
+              <Styled.FormWrapper>
               <Styled.FormTitleWrapper>
                 <Styled.FormTitle style={{ isMobile }}>{title}</Styled.FormTitle>
               </Styled.FormTitleWrapper>
               <Styled.FormContent style={{ path, isMobile }}>
                 {data.length > 0 && (
-                  <Styled.InputsWrapper>
+                  <Styled.InputsWrapper style={{path, device}}>
                     {data?.map((element, index) => {
                       return (
                         <Input
@@ -221,6 +239,7 @@ const Authentication = (props) => {
                   )}
                 </Styled.ErrorMessageContainer>
               </Styled.FormContent>
+
               <Styled.ButtonsWrapper style={{ path }}>
                 <Styled.LoginButton onClick={() => handleClick("login")} style={{ isMobile }}>
                   {handleText("login")}
@@ -229,11 +248,14 @@ const Authentication = (props) => {
                   {handleText("register")}
                 </Styled.RegisterButton>
               </Styled.ButtonsWrapper>
+
             </Styled.FormWrapper>
           </Styled.AuthenticationContent>
-        </Styled.AuthenticationWrapper>
+        </Styled.AuthenticationWrapper> 
+        <Particle />
       </Styled.Container>
-      <Particle />
+      
+      {/* <Particle /> */}
     </>
   );
 };

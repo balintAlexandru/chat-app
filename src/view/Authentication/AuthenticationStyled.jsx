@@ -1,21 +1,56 @@
 // LIBRARIES
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes, ServerStyleSheet } from "styled-components";
 
 // container
-export const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+export const Container = styled.div(
+  ({ style }) => css`
+    ${style.device === "mobile" &&
+    css`
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9rem 3.5rem 30rem 3.5rem;
+      position: fixed;
+      min-height: 100%;
+    `}
+    ${style.device === "browser" &&
+    css`
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15rem 30rem;
+    `}
+  `
+);
 
 // authentication wrapper
 export const AuthenticationWrapper = styled.div(
   ({ style }) => css`
-    width: ${style.isMobile ? "85%" : "50%"};
+    ${style.device === "mobile" &&
+    css`
+      width: 100%;
+      height: 100%;
+      border-radius: 1.4rem;
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `}
+    ${style.device === "browser" &&
+    css`
+      width: 100%;
+      height: 100%;
+      border-radius: 1.4rem;
+      z-index: 9;
+      display: flex;
+      align-items: center;
+    `} /* width: ${style.isMobile ? "85%" : "50%"};
     height: ${style.isMobile ? "75%" : "60%"};
-    display: flex;
+   
     background: rgba(48, 39, 68, 0.24);
     border-radius: 1.4rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -24,15 +59,40 @@ export const AuthenticationWrapper = styled.div(
     z-index: 10;
     ${style.isMobile &&
     css`
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-    `}
+    `} */
   `
 );
 export const AuthenticationInfo = styled.div(
   ({ style }) => css`
-    width: 60%;
+    ${style.device === "mobile" &&
+    css`
+      width: 100%;
+      border-top-left-radius: 1.6rem;
+      border-top-right-radius: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 84, 126, 0.168);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(6.1px);
+      -webkit-backdrop-filter: blur(6.1px);
+    `}
+    ${style.device === "browser" &&
+    css`
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 1.6rem;
+      border-bottom-left-radius: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 84, 126, 0.168);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(6.1px);
+      -webkit-backdrop-filter: blur(6.1px);
+    `} /* width: 60%;
     height: 100%;
     border-top-left-radius: 1.6rem;
     border-bottom-left-radius: 1.6rem;
@@ -46,13 +106,30 @@ export const AuthenticationInfo = styled.div(
       border-top-left-radius: 1.6rem;
       border-top-right-radius: 1.6rem;
       border-bottom-left-radius: 0rem;
-    `}
+    `} */
   `
 );
 
 export const AuthenticationContent = styled.div(
   ({ style }) => css`
-    width: 40%;
+    ${style.device === "mobile" &&
+    css`
+      width: 100%;
+      height: 100%;
+      background: #46315d;
+      border-bottom-right-radius: 1.6rem;
+      border-bottom-left-radius: 1.6rem;
+      padding: 2rem;
+    `}
+    ${style.device === "browser" &&
+    css`
+      width: 100%;
+      height: 100%;
+      background: #46315d;
+      border-top-right-radius: 1.6rem;
+      border-bottom-right-radius: 1.6rem;
+      padding: 2rem;
+    `} /* width: 40%;
     height: 100%;
     background: #3c2b50;
     border-top-right-radius: 1.6rem;
@@ -64,11 +141,11 @@ export const AuthenticationContent = styled.div(
       border-top-right-radius: 0rem;
       border-bottom-right-radius: 1.6rem;
       border-bottom-left-radius: 1.6rem;
-    `}
+    `} */
   `
 );
 export const AuthenticationInfoBackground = styled.img`
-  width: 60%;
+  width: 100%;
   height: 100%;
   opacity: 20%;
   backdrop-filter: blur(5px);
@@ -79,16 +156,26 @@ export const AuthenticationInfoBackground = styled.img`
   top: 0;
 `;
 
+export const AuthenticationLogoWrapper = styled.div`
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const AuthenticationLogo = styled.img(
   ({ style }) => css`
-    width: 25rem;
-    height: 25rem;
+    width: 100%;
+    height: 100%;
     filter: contrast(70%);
+    /* width: 25rem;
+    height: 25rem;
+   
     ${style.isMobile &&
     css`
       width: 15rem;
       height: 15rem;
-    `}
+    `} */
   `
 );
 
@@ -98,7 +185,6 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const FormTitleWrapper = styled.div`
@@ -109,17 +195,37 @@ export const FormTitle = styled.span(
     font-size: ${style.isMobile ? "2rem" : "3rem"};
     font-weight: 800;
     color: white;
-    /* opacity: 80%; */
   `
 );
 
-export const InputsWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-bottom: 4rem;
-`;
+export const InputsWrapper = styled.div(
+  ({ style }) => css`
+  ${console.log(style)}
+    ${style.device === "mobile" &&
+    css`
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 4.5rem 3rem 3rem 3rem;
+    `}
+    ${(style.device === "browser" && style.path === "LOGIN") && css`
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 10rem 3rem 3rem 3rem;
+    `}
+    ${(style.device === "browser" && style.path === "REGISTER") &&
+    css`
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 4.5rem 3rem 3rem 3rem;
+    `}
+  `
+);
 export const ButtonsWrapper = styled.div(
   ({ style }) => css`
     width: 100%;
@@ -127,6 +233,7 @@ export const ButtonsWrapper = styled.div(
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 2.5rem 3rem 0rem 3rem;
   `
 );
 export const LoginButton = styled.button(
@@ -205,23 +312,28 @@ export const ErrorMessage = styled.span(
 
 export const ErrorMessageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 4.5rem;
   display: flex;
-  justify-content: end;
-  align-items: center;
+  justify-content: flex-end;
+  /* padding: 3rem 1rem 0rem 0rem; */
   overflow: hidden;
 `;
 
 export const FormContent = styled.div(
   ({ style }) => css`
     width: 100%;
-    height: ${style.path === "WELCOME" ? "25%" : style.path === "LOGIN" ? "35%" : "45%"};
+    /* width: 100%;
+    height: ${style.path === "WELCOME"
+      ? "25%"
+      : style.path === "LOGIN"
+      ? "35%"
+      : "45%"};
     display: flex;
     flex-direction: column;
     margin-top: ${style.path === "WELCOME" ? "0rem" : "2rem"};
     ${style.isMobile &&
     css`
       height: ${style.path === "LOGIN" ? "37%" : "47%"};
-    `}
+    `} */
   `
 );
