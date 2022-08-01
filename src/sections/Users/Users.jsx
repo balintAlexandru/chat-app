@@ -84,12 +84,19 @@ const Users = (props) => {
 
   return (
     <Styled.Container>
-      <Styled.UsersContent>
-        <Styled.SearchWrapper>
+       <Styled.UsersContent>
+       {/* <Styled.SearchWrapper>
           <Styled.Search placeholder="🔍 Search" />
         </Styled.SearchWrapper>
-         <Styled.UserListWrapper>
-          {usersModel?.map((user, index) => (
+         <Styled.UserListWrapper>  */}
+         {/* <User
+              onClick={onClick}
+              styleType={styleType}
+              icon={userIcon}
+              name={"gigel mirel"}
+              lastMessage={"ce faci?????"}
+            /> */}
+          {/* {usersModel?.map((user, index) => (
             <User
               key={`user-${index}`}
               onClick={onClick}
@@ -98,12 +105,10 @@ const Users = (props) => {
               name={user.name}
               lastMessage={user.lastMessage}
             />
-          ))}
+          ))} */}
           
-        </Styled.UserListWrapper> 
-      </Styled.UsersContent>
-
-      {/* {showUserList && (
+        {/* </Styled.UserListWrapper>  */}
+        {showUserList && (
         <>
           <Styled.SearchWrapper>
             <Styled.Search placeholder="🔍 Search" />
@@ -114,13 +119,16 @@ const Users = (props) => {
             ))}
           </Styled.UserListWrapper>
         </>
-      )} */}
+      )}
+      </Styled.UsersContent> 
+
+   
       <Styled.UserProfile>
-        {/*  <Styled.UserIconsWrapper>
+         <Styled.UserIconsWrapper>
           <Styled.ProfileIcon />
           <Styled.AddFriendIcon />
           <Styled.MessageContact onClick={() => setShowUserList(!showUserList)} />
-        </Styled.UserIconsWrapper>*/}
+        </Styled.UserIconsWrapper> 
       </Styled.UserProfile>
     </Styled.Container>
   );

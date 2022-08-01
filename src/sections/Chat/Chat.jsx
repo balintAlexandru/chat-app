@@ -2,6 +2,7 @@ import React from "react";
 
 // STYLES
 import * as Styled from "./ChatStyled";
+import background from "../../assets/images/sections/chat/background.webp";
 
 // LIBRARIES
 
@@ -38,7 +39,13 @@ const Chat = (props) => {
           <Styled.ChatName>{userName}</Styled.ChatName>
         </Styled.ChatNameWrapper>
       </Styled.ChatHeader>
-      <Styled.ChatContent></Styled.ChatContent>
+      <Styled.ChatContent>
+      {styleType === "mobile" && (
+          <Styled.ChatBackgroundWrapper>
+            <Styled.ChatBackground src={background} />
+          </Styled.ChatBackgroundWrapper>
+        )}
+      </Styled.ChatContent>
       <Styled.ChatMessage style={{ styleType }}>
         <Styled.SendMessageWrapper>
           <Styled.TextareaMessage style={{ styleType }} rows="5" cols="50" />

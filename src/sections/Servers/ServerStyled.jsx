@@ -9,7 +9,8 @@ export const Container = styled.div(
     padding: 5rem 0rem;
     display:flex;
     align-items:center;
-    gap: ${style.styleType === "mobile" ? "3rem" : "1.5rem"};
+    gap: ${style.styleType === "mobile" ? "4rem" : "1.5rem"};
+    padding:0 2rem;
     
   `
 );
@@ -22,7 +23,7 @@ export const ServerIconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   &:not(:last-of-type) {
-      margin-right: 1.2rem;
+      /* margin-right: 1.2rem; */
     }
    
 `;

@@ -9,6 +9,7 @@ export const Container = styled.div(
     width: 100%;
     height: 100%;
     border-radius: 1.5rem;
+    position:fixed;
   `
 );
 
@@ -52,7 +53,7 @@ export const ChatName = styled.span`
 // content
 export const ChatContent = styled.div`
   width: 100%;
-  height: 81%;
+  height: 82%;
   background-color: #302a493d;
 `;
 
@@ -60,7 +61,7 @@ export const ChatContent = styled.div`
 export const ChatMessage = styled.div(
   ({ style }) => css`
     width: 100%;
-    height: 12%;
+    height: 26%;
     background-color: #4b494c65;
     border-bottom-left-radius: ${style.styleType === "browser" ? "1.5rem" : "0rem"};
     border-bottom-right-radius: ${style.styleType === "browser" ? "1.5rem" : "0rem"};
@@ -68,7 +69,7 @@ export const ChatMessage = styled.div(
 );
 export const SendMessageWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 40%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,4 +104,15 @@ export const SendMessageIcon = styled(SendIcon)`
     color: white;
     cursor: pointer;
   }
+`;
+export const ChatBackgroundWrapper = styled.div`
+  width:100%;
+  height:100%;
+  /* background-color:red; */
+`;
+
+export const ChatBackground = styled.img`
+  width:100%;
+  height:100%;
+  opacity:50%;
 `;

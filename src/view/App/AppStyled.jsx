@@ -12,7 +12,7 @@ export const Container = styled.div`
   justify-content:space-between;
   /* min-height: 100vh;
   min-height: -webkit-fill-available; */
-  background-color:red;
+  /* background-color:red; */
 }
 `;
 
@@ -22,23 +22,24 @@ export const ServersWrapper = styled.div(
     height: 9rem;
     overflow-x: scroll;
     overflow-y: hidden;
-    background-color: #22222250;
+    background-color: #5f585850;
     display: flex;
     align-items: center;
     &::-webkit-scrollbar {
       display: none;
     }
-    background-color:blue;
+    /* background-color:blue; */
   `
 );
 
 export const UsersWrapper = styled.div(
   ({ style }) => css`
-  background-color: #22222250;
+  /* background-color: #22222250; */
     ${style.display === "mobile" &&
     css`
       width: 100%;
       height:100%;
+      /* background-color:grey; */
      
     `}
     ${style.display === "browser" &&
